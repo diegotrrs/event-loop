@@ -5,7 +5,7 @@ class SimpleEventLoop {
   private taskQueue: Task[] = []
   private isRunning: boolean = false
 
-  queue(task: Task): void {
+  enqueue(task: Task): void {
     this.taskQueue.push(task)
     if (!this.isRunning){
       this.run()
@@ -15,7 +15,7 @@ class SimpleEventLoop {
   private run(): void {
     this.isRunning = true
     while (this.taskQueue.length > 0) {
-      const task = this.taskQueue.shift()
+      const task = this.taskQueue.shift()      
       if (task){
         task()
       }
